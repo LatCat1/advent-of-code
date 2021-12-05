@@ -1,11 +1,13 @@
-with open("Day1.txt", 'r') as file:
+with open("Day 1/Day1.txt", 'r') as file:
     lines = [line.rstrip() for line in file]
 
 depth = [int(depth) for depth in lines]
 
-count = 0
-for i in range(0, len(depth)-3):
-    if sum(depth[i:i+3]) < sum(depth[(i+1):(i+4)]):
-        count += 1
+def num_increasing(window_size):
+    count = 0
+    for i in range(0, len(depth)-window_size):
+        if sum(depth[i:i+window_size]) < sum(depth[(i+1):(i+1+window_size)]):
+            count += 1
+    return count
 
-print(count)
+print(f"Window size 1: {num_increasing(1)}\nWindow size 3: {num_increasing(3)}")

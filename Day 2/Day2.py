@@ -6,12 +6,14 @@ commands = [(c[0], int(c[1])) for c in commands]
 
 hoz = 0
 depth = 0
+for (dir, dist) in commands:
+    if dir == 'forward': hoz += dist
+    elif dir == 'down': depth += dist
+    elif dir == 'up': depth -= dist
+print(f"Simple distance is {hoz*depth}")
 
-# for (dir, dist) in commands:
-#     if dir == 'forward': hoz += dist
-#     elif dir == 'down': depth += dist
-#     elif dir == 'up': depth -= dist
-
+hoz = 0
+depth = 0
 aim = 0
 for (dir, dist) in commands:
     if dir == 'down': aim += dist
@@ -19,5 +21,4 @@ for (dir, dist) in commands:
     elif dir == 'forward':
         hoz += dist
         depth += aim*dist
-
-print(hoz * depth)
+print(f"Complex distance is {hoz*depth}")

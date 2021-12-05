@@ -19,12 +19,7 @@ def bingo(board, called_nums):
             vert = vert and board[j][i] in called_nums
         if hoz or vert: return True
     return False
-
-# def foldl(base, func, iter):
-#     for i in iter:
-#         base = func(base, i)
-#     return base
-
+    
 i = 0
 winners = []
 prev_winners = []
