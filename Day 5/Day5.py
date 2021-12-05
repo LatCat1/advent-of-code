@@ -36,8 +36,8 @@ def draw_segment(board, segment):
     return board
 
 # the commented-out version is for part 1
-# segments = list(filter(lambda s: is_hoz_or_vert(s), [interpret_segment(l) for l in lines]))
-segments = [interpret_segment(l) for l in lines]
+segments = list(filter(lambda s: is_hoz_or_vert(s), [interpret_segment(l) for l in lines]))
+# segments = [interpret_segment(l) for l in lines]
 
 # get the largest coordinate in a segment; the grid doesn't need to be any larger
 n = max(map(lambda x: max(x[0][0], x[0][1], x[1][0], x[1][1]), segments)) + 1
@@ -47,7 +47,6 @@ grid = [[0 for _ in range(n)] for _ in range(n)]
 [draw_segment(grid, s) for s in segments]
 
 # count the number of places there are more than one intersection
-flat_grid = [v for row in grid for v in row]
-count = len(list(filter(lambda x: x>=2, flat_grid)))
+count = len([v for row in grid for v in row if v >= 2])
 
 print(count)
