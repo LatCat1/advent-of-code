@@ -6,7 +6,7 @@ depth = [int(depth) for depth in lines]
 def num_increasing(window_size):
     count = 0
     for i in range(0, len(depth)-window_size):
-        if sum(depth[i:i+window_size]) < sum(depth[(i+1):(i+1+window_size)]):
+        if depth[i] < depth[i+window_size]:
             count += 1
     return count
 
