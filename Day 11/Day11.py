@@ -13,17 +13,13 @@ def step(pos):
     # if position is in the grid:
     if pos in grid:
         (flashed, power) = grid[pos]
-        if flashed:
-            pass
         if not flashed:
             power += 1
             if power > 9:
                 flashed = True
                 grid[pos] = (flashed, power) # update that you flashed
                 (x,y) = pos
-                for dx in [-1, 0, 1]:
-                    for dy in [-1, 0, 1]:
-                        step((x+dx,y+dy)) # doesn't matter if you recurse on yourself, you flashed
+                [step((x+dx, y+dy)) for dx in [-1,0,1] for dy in [-1,0,1]]
             else:
                 grid[pos] = (flashed, power) # just increase your power by 1
 
