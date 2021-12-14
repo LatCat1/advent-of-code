@@ -19,9 +19,13 @@ def proceed_day(fish: list):
     fish[spawn_age] = extras
     fish[recover_time] += extras
 
-days = 256
-[proceed_day(condensed) for _ in range(days)]
+days = 0
+# average of max and min weight from http://www.ijichthyol.org/index.php/iji/article/download/4-2-7/188
+body_weight_g = 1.230+0.381/2 
+mass_earth_g = 1.37 * 10**25 * 1000
+num_search = mass_earth_g/body_weight_g
+while sum(condensed) <  num_search:
+    proceed_day(condensed)
+    days += 1
 
-total = sum(condensed)
-
-print(total)
+print(days)
