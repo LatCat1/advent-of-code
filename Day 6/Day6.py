@@ -22,7 +22,7 @@ def proceed_day(fish: list):
 days = 0
 # average of max and min weight from http://www.ijichthyol.org/index.php/iji/article/download/4-2-7/188
 body_weight_g = 1.230+0.381/2 
-mass_earth_g = 1.37 * 10**25 * 1000
+mass_earth_g = 5.9722 * 10**24 * 1000
 num_search = mass_earth_g/body_weight_g
 while sum(condensed) <  num_search:
     proceed_day(condensed)
