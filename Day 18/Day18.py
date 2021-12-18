@@ -1,7 +1,7 @@
-import pathlib
+import pathlib, json
 
 with open(f"{pathlib.Path(__file__).parent.resolve()}/Day18.txt", 'r') as file:
-    nums = [eval(line.rstrip()) for line in file]
+    nums = [json.loads(line.rstrip()) for line in file]
 
 def splitgreaterthan(n, val=10, found=False):
     if type(n) is int:
