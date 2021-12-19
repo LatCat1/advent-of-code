@@ -15,7 +15,7 @@ ymax = -72
 # ymin = -10
 # ymax = -5
 
-probes = [(x,y) for x in range(0,xmax+1) for y in range(ymin,1000)]
+probes = [(x,y) for x in range(0,xmax+1) for y in range(ymin,abs(ymin))]
 
 def probsuccess(probe):
     dx,dy = probe
