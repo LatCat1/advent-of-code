@@ -39,7 +39,10 @@ def printm(z):
             print('#' if z.get((x,y), 0) else '.', end='')
         print()
 
-for i in range(50):
-    image = recalcimage(image, i%2)
-z = image
-print(sum([z[k] for k in z]))
+farbehavior = lambda i: i and image_enhancement[0] and (image_enhancement[-1] or i%2)
+
+for i in range(2):
+    image = recalcimage(image, farbehavior(i))
+print(f'Part 1: {sum([image[k] for k in image])}')
+for i in range(2, 50): image = recalcimage(image, farbehavior(i))
+print(f'Part 2: {sum([image[k] for k in image])}')
