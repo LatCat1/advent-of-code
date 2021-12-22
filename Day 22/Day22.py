@@ -32,7 +32,7 @@ def legalrect(r):
 def overlap(c1, c2): #this is called 1.7 million times; it's basically the whole runtime
     # first, check if the cubes intersect
     inter = intersect(c1,c2)
-    if inter: return ([c1], [])
+    if inter is None: return ([c1], [])
     # now we can just treat c2 as its intersection with c1
     # print('there is an intersection')
     # there are three possible regions: x1,y1; y1,y2; y2, x2 (the +-1 is because of inclusiveness). generate this for each of them
@@ -43,13 +43,10 @@ def overlap(c1, c2): #this is called 1.7 million times; it's basically the whole
     for x in range(3):
         for y in range(3):
             for z in range(3):
-                # print('checking', (regions[0][x], regions[1][y], regions[2][z]))
                 if (x != 1 or y != 1 or z!= 1) and legalrect((regions[0][x], regions[1][y], regions[2][z])):
-                    # print('good')
                     cubes.append((regions[0][x], regions[1][y], regions[2][z]))
 
-
-    return cubes, inter
+    return cubes, 0
 
 def volume(r):
     return (1+r[0][1]-r[0][0])*(1+r[1][1]-r[1][0])*(1+r[2][1]-r[2][0])
