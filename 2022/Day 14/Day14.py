@@ -25,10 +25,12 @@ for pth in paths:
 rock_size = len(grid)
 floory = max(map(lambda x: x[1], grid)) + 2
 p1_done = False
+path = [sand_start]
 while sand_start not in grid:
     # spawn a sand and keep moving it
-    sx, sy = sand_start
+    sx, sy = path[-1]
     while True:
+        path.append((sx, sy))
         if (sx, sy+1) not in grid:
             sy += 1
         elif (sx-1, sy+1) not in grid:
@@ -45,7 +47,10 @@ while sand_start not in grid:
                 print('p1:', len(grid) - rock_size)
             p1_done = True
             break
+        # print(path)
     # done moving
+    path.pop(-1)
+    path.pop(-1)
     grid.add((sx, sy))
 
 print('p2:', len(grid) - rock_size)
