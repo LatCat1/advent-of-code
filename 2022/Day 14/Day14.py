@@ -30,7 +30,6 @@ while sand_start not in grid:
     # spawn a sand and keep moving it
     sx, sy = path[-1]
     while True:
-        path.append((sx, sy))
         if (sx, sy+1) not in grid:
             sy += 1
         elif (sx-1, sy+1) not in grid:
@@ -48,8 +47,8 @@ while sand_start not in grid:
             p1_done = True
             break
         # print(path)
+        path.append((sx, sy))
     # done moving
-    path.pop(-1)
     path.pop(-1)
     grid.add((sx, sy))
 
