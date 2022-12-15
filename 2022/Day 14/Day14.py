@@ -28,9 +28,7 @@ p1_done = False
 while sand_start not in grid:
     # spawn a sand and keep moving it
     sx, sy = sand_start
-    moved = True
-    while moved:
-        moved = True
+    while True:
         if (sx, sy+1) not in grid:
             sy += 1
         elif (sx-1, sy+1) not in grid:
@@ -40,13 +38,13 @@ while sand_start not in grid:
             sx += 1
             sy += 1
         else:
-            moved = False
+            break
         # check if on ground. stop it
         if floory == sy + 1:
             if not p1_done:
                 print('p1:', len(grid) - rock_size)
             p1_done = True
-            moved = False
+            break
     # done moving
     grid.add((sx, sy))
 
