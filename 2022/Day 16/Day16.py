@@ -24,11 +24,9 @@ for n in grid:
     for n2 in grid[n]:
         shortest[n][n2] = 1
 ordered_nodes = list(rates.keys())
-c = 0
 for i, pivot in enumerate(ordered_nodes):
     for a in ordered_nodes:
         for b in ordered_nodes:
-            c += 1
             if pivot in shortest[a] and b in shortest[pivot]:
                 detour = shortest[a][pivot] + shortest[pivot][b]
                 if b not in shortest[a] or shortest[a][b] > detour:
@@ -50,6 +48,6 @@ def solve(loc, time_remaining, visited):
 
 print('P1:', solve('AA', 30, 0))
 
-# part 2 yay. can take ~a few minutes
+# part 2 yay. usually < min on my laptop, should be much faster elsewhere
 print('P2:', max(solve('AA', 26, d) + solve('AA', 26, all[0]-d) 
             for d in range(2**(len(nonzero_flow)-1))))
