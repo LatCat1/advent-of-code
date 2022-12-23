@@ -22,14 +22,10 @@ while moved:
     for x,y in elves:
         if len({(x+i,y+j) for i in [-1,0,1] for j in [-1,0,1] if i or j}&elves):
             for j in range(4):
-                if not len((q := (order[(i+j)%4])(x, y))[0]&elves):
+                if not len((q := (order[(i+j-1)%4])(x, y))[0]&elves):
                     movements[q[1]] = movements.get(q[1], set()) | {(x,y)}
                     break
-    for to in movements:
-        if len(movements[to]) == 1:
-            moved = True
-            elves.add(to)
-            elves.remove(movements[to].pop())
+    moved = [(elves.add(to), elves.remove(movements[to].pop())) for to in movements if len(movements[to]) == 1]
     if i == 10:
         min_x = min(map(lambda x:x[0], elves))
         max_x = max(map(lambda x:x[0], elves))
