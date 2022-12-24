@@ -25,12 +25,10 @@ while moved:
                 if not len((q := (order[(i+j-1)%4])(x, y))[0]&elves):
                     movements[q[1]] = movements.get(q[1], set()) | {(x,y)}
                     break
-    moved = [(elves.add(to), elves.remove(movements[to].pop())) for to in movements if len(movements[to]) == 1]
+    moved = [(elves.add(to), elves.remove(movements[to].pop())) for to in movements 
+                if len(movements[to]) == 1]
     if i == 10:
-        min_x = min(map(lambda x:x[0], elves))
-        max_x = max(map(lambda x:x[0], elves))
-        min_y = min(map(lambda x:x[1], elves))
-        max_y = max(map(lambda x:x[1], elves))
-        print('P1:', (max_x-min_x+1)*(max_y-min_y+1)-len(elves))
+        print('P1:', (max(map(lambda x:x[0], elves))-min(map(lambda x:x[0], elves))+1)
+            *(max(map(lambda x:x[1], elves))-min(map(lambda x:x[1], elves))+1)-len(elves))
 
 print('P2:', i)
