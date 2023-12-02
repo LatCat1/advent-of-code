@@ -1,7 +1,7 @@
 from loader import load_data
 from functools import lru_cache
 
-data = load_data(day=1, year=2023)
+data = load_data(day=1, year=2023, testing=True)
 
 data = data.split('\n')
 
@@ -23,7 +23,6 @@ def firstnum(s, d):
     if '0' <= s[0] and s[0] <= '9':
         return s[0]
     for t in nums:
-        print(s[:len(t)])
         if s[:len(t)] == t[::d]:
             return str(nums[t])
     return firstnum(s[1:], d)
