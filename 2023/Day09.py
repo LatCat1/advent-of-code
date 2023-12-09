@@ -8,14 +8,14 @@ data = data.split('\n')
 
 histories = [[int(x) for x in r.split()] for r in data]
 
-def lagrance_interpolate(seq, x):
+def lagrange_interpolate(seq, x):
     return sum(
         seq[i]*reduce(mul,((x - j) for j in range(len(seq)) if i != j))//\
                reduce(mul,((i - j) for j in range(len(seq)) if i != j))
         for i in range(len(seq))
     )
 
-p1 = sum(lagrance_interpolate(h, len(h)) for h in histories)
-p2 = sum(lagrance_interpolate(h, -1)     for h in histories)
+p1 = sum(lagrange_interpolate(h, len(h)) for h in histories)
+p2 = sum(lagrange_interpolate(h, -1)     for h in histories)
 print(f"Part 1: {p1}\nPart 2: {p2}")
     
