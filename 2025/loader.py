@@ -26,7 +26,7 @@ def load_data(day: int,
     try:
         with open(f"{pathlib.Path(__file__).parent.resolve()}/{target_name}", 'r') as f:
             data = f.read()
-        return data.strip()
+        return data
     except FileNotFoundError as _:
         return download_data_to_file(day, year, target_name)
 
