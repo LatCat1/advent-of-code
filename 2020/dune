@@ -1,0 +1,11 @@
+(executable
+ (name day23))
+
+(executable
+ (name day15))
+
+(executable
+ (name day24))
+
+(executable
+ (name day25))

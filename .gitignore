@@ -6,3 +6,5 @@ tmp.txt
 *.hi
 *.o
 .DS_Store
+*/_build
+*.txt
